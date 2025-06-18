@@ -21,8 +21,8 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Hier teste ich'
+                sh 'mvn test'
                 echo 'Tests erfogreich'
-                // sh 'mvn test'
             }
         }
 
