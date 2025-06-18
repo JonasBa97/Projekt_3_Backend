@@ -1,0 +1,37 @@
+name: Backend CI/CD
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Build
+        run: |
+          mvn clean install
+
+      - name: Run Tests
+        run: |
+          echo "Hier teste ich"  
+          echo "Tests erfogreich"
+        # mvn test
+
+      - name: Deploy
+        run: |
+          echo "Hier deploye ich"
+          echo "Deployment erfolgreich"
+        # deploy-script
